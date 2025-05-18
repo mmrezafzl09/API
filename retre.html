@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="bg-sky-400 flex items-center justify-center h-screen">
+
+  <form id="courseForm" class="bg-white p-8 rounded-2xl shadow-xl w-6xl " >
+    <h2 class="text-3xl mb-4 text-center font-semibold">Create Course</h2>
+
+    <label class="block mb-2 font-medium text-gray-700">Course Name</label>
+    <input type="text" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="learning php" />
+
+    <label class="block mb-2 font-medium text-gray-700">Description</label>
+    <textarea name="description" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="this is php course"></textarea>
+
+    <label class="block mb-2 font-medium text-gray-700">shortDescription</label>
+    <input type="text" name="shortDescription" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="" />
+
+    <label class="block mb-2 font-medium text-gray-700">Price</label>
+    <input type="number" name="price" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="1400" />
+
+    <label class="block mb-2 font-medium text-gray-700">categoryDocId</label>
+    <select id="categorySelect" name="categoryDocId" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
+      <option value="Loading categoties..."></option>
+    </select>
+
+    <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 font-medium transition duration-200">
+      submit
+    </button>
+
+    <p id="message" class="mt-4 text-center text-sm font-medium text-red-600"></p>
+  </form>
+  <script src="app.js"></script>
+</body>
+</html>
