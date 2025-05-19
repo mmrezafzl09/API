@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="favorite.css">
 </head>
 <body class="bg-sky-400 flex items-center justify-center h-screen">
 
@@ -24,14 +25,21 @@
     <input type="number" name="price" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="1400" />
 
     <label class="block mb-2 font-medium text-gray-700">categoryDocId</label>
-    <select id="categorySelect" name="categoryDocId" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
-      <option value="Loading categoties..."></option>
-    </select>
 
+    <div class="relative w-full">
+      <select id="categorySelect" name="categoryDocId"
+      class="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <option value="">Choices a category</option>
+      </select>
+      <div id="loaderSpinner"
+          class="hidden absolute z-10 top-1/2 right-2 -translate-y-1/2 w-5 h-5 border-5 border-t-blue-500 border-gray-200 rounded-full animate-spin">
+      </div>
+    </div>
+  
     <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 font-medium transition duration-200">
       submit
     </button>
-
+    
     <p id="message" class="mt-4 text-center text-sm font-medium text-red-600"></p>
   </form>
   <script src="app.js"></script>

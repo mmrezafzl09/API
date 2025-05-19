@@ -2,23 +2,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoidm90aWplNTYwMEBwdGlvbmcuY29tIiwicm9sZXMiOlsic3R1ZGVudCIsInRlYWNoZXIiXSwiaWF0IjoxNzQ3NTAyNjg5LCJleHAiOjE3NTAwOTQ2ODl9.qjJOAFADhu_R0qo1yHuvBs1oQ7eHdi6wZCT_II2-uAs"
   
-  let sendCategories = false
-
   const select = document.getElementById("categorySelect")
-  select.addEventListener("focus", loadCategories)
+  const loader = document.getElementById("loaderSpinner")
+
+  select.addEventListener("click", loadCategories)
 
   async function loadCategories() {
-    if (sendCategories) return
 
+    loader.classList.remove("hidden")
+    select.classList.add("hide-select-arrow") 
     try {
       const res = await fetch("https://api.timetally.info/api/v1/category/all", {
         headers: {
           "Accept" : "application/json"
         }
       })
+      document.getElementById("categorySelect").style = "-webkit-appearance: default"
+      
       const json = await res.json()
       select.innerHTML = "" 
-  
+      
       json.data.forEach(cat => {
         const option = document.createElement("option")
         option.value = cat.documentId
@@ -29,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       select.innerHTML = "<option value=''>Failed to load categories</option>"
       console.error("Error loading categories:", error)
+    } finally {
+      loader.classList.add("hidden")
+      select.classList.remove("hide-select-arrow")
     }
   }
   
