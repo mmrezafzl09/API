@@ -4,13 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
   const select = document.getElementById("categorySelect")
   const loader = document.getElementById("loaderSpinner")
+  let Loaded = false;
 
-  select.addEventListener("click", loadCategories)
-
-  async function loadCategories() {
-
+  select.addEventListener("mousedown", loadCategories)
+  async function loadCategories(e) {
+    if (Loaded) return
+    
+    e.preventDefault()
     loader.classList.remove("hidden")
-    select.classList.add("hide-select-arrow") 
+    select.classList.add("hide-select-arrow")
+
     try {
       const res = await fetch("https://api.timetally.info/api/v1/category/all", {
         headers: {
@@ -21,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
       
       const json = await res.json()
       select.innerHTML = "" 
+      Loaded = true
+      select.innerHTML = "<option value=''>Categories Received</option>"
       
       json.data.forEach(cat => {
         const option = document.createElement("option")
@@ -37,8 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       select.classList.remove("hide-select-arrow")
     }
   }
-  
-  
+
   document.getElementById("courseForm").addEventListener("submit", async function(e) {
       e.preventDefault()
   
