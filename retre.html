@@ -24,18 +24,19 @@
     <label class="block mb-2 font-medium text-gray-700">Price</label>
     <input type="number" name="price" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4" placeholder="1400" />
 
-    <label class="block mb-2 font-medium text-gray-700">categoryDocId</label>
-
-    <div class="relative w-full">
-      <select id="categorySelect" name="categoryDocId"
-      class="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-      <option value="">Choices a category</option>
-      </select>
-      <div id="loaderSpinner"
-          class="hidden absolute z-10 top-1/2 right-2 -translate-y-1/2 w-5 h-5 border-5 border-t-blue-500 border-gray-200 rounded-full animate-spin">
-      </div>
+    <div id="customDropdown" class="relative w-full">
+      <button type="button" class="dropdown-btn w-full bg-white border border-gray-300 p-3 rounded-lg flex justify-between items-center">
+        <span class="selected-text text-gray-700">Select a category</span>
+        <div class="relative w-5 h-5 min-w-5 min-h-5">
+          <svg class="icon absolute inset-0 w-5 h-5 text-gray-400 transition-opacity duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+          <div class="spinner hidden absolute inset-0 w-5 h-5 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </button>
+      <ul class="dropdown-list absolute z-10 w-full bg-white border-none rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"></ul>
     </div>
-  
+
     <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 font-medium transition duration-200">
       submit
     </button>
